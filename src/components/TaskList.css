@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   background-color: var(--red);
+  gap: 5px;
   height: 400px;
   width: 100%;
   padding: 10px;
