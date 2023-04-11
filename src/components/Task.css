@@ -12,12 +12,13 @@
 
 .task-content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 70%;
   text-align: center;
+  gap: 5px;
 }
 
 .task-actions {
@@ -35,4 +36,27 @@
   justify-content: center;
   width: 45px;
   height: 45px;
+}
+
+.title,
+.content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: var(--green) 1.5px solid;
+  border-radius: 5px;
+  width: 100%;
+}
+.content,
+.content > p {
+  height: 100px;
+  width: 100%;
+}
+
+.title:hover,
+.content :hover {
+  cursor: pointer;
+  background-color: var(--green);
 }
