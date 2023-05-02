@@ -1,7 +1,8 @@
 /**
  * 
  * @param {number} id 
- * @param {string} content 
+ * @param {string} title 
+ * @param {string|TaskModel} content 
  * @param {boolean} completed 
  */
 

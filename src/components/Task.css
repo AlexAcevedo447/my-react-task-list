@@ -5,9 +5,13 @@
   justify-content: flex-start;
   gap: 15px;
   padding: 10px;
-  background-color: #2e9e557f;
+  background-color: var(--blue-100);
   width: 100%;
   border-radius: 10px;
+  position: relative;
+  height: 70px;
+  padding: 20px;
+  letter-spacing: 3px;
 }
 
 .task-content {
@@ -19,6 +23,12 @@
   width: 70%;
   text-align: center;
   gap: 5px;
+  position: absolute;
+}
+
+.task-content strong {
+  color: #fff;
+  display: block;
 }
 
 .task-actions {
@@ -27,6 +37,9 @@
   align-items: center;
   justify-content: center;
   width: 30%;
+  position: absolute;
+  right: 0px;
+  gap: 5px;
 }
 
 .task-action {
@@ -36,6 +49,10 @@
   justify-content: center;
   width: 45px;
   height: 45px;
+  text-decoration: none;
+  color: var(--blue-100);
+  background-color: white;
+  border-radius: 50%;
 }
 
 .title,
