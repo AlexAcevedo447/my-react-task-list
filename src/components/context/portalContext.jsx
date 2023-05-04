@@ -1,8 +1,7 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useReducer } from "react";
 import { portalReducer, portalInitialState } from "../reducers/portalReducer";
 import { ModalProps } from "../../models/modalProps";
 import { tasksReducer, tasksInitialState } from "../reducers/tasksReducer";
-import { dataBaseReducer, dbInitialState } from "../reducers/dataBaseReducer";
 
 const portalInitialContext = {
     portalContextReducer: () => [{ active: false, modal_props: new ModalProps() }, ({ type, modal_props }) => { }],

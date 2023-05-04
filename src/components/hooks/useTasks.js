@@ -36,9 +36,8 @@ export function useTasks() {
                 setTask({ type, taskId: id });
                 break;
             case "delete":
-                const taskFound = tasks.filter((task) => task.id === id)[0];
                 try {
-                    togglePortal("toggle", new ModalProps("modal-comfirm-delete", "Delete a task", { text: "Are you sure you want to delete this task?", task: taskFound }))
+                    setTask({ type, taskId: id })
                 } catch (error) {
                     console.error(error);
                 }

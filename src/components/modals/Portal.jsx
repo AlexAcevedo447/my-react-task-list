@@ -1,14 +1,13 @@
-import { useContext } from "react";
+
 import { createPortal } from "react-dom";
-import { PortalContext } from "../context/portalContext";
 import "./Portal.css"
+import { usePortal } from "../hooks";
 
 const myPortal = document.getElementById('portal');
 
 
 export const Portal = ({ children }) => {
-    const { portalContextReducer } = useContext(PortalContext);
-    let [portalIsActive] = portalContextReducer();
+    const [portalIsActive] = usePortal();
 
     return (
         <>
