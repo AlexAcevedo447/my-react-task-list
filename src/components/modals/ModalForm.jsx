@@ -1,16 +1,12 @@
-import { useContext, useState } from "react";
 import "./ModalForm.css";
-import { TaskModel } from "../../models/taskModel";
-import { PortalContext } from "../context/portalContext";
-import { ModalProps } from "../../models/modalProps";
+import { useTasks } from "../hooks";
 
 export function ModalForm({ kindof }) {
-    const { portalContextReducer, tasksContextReducer } = useContext(PortalContext);
-    let titleToModify = portalContextReducer.portalIsActive.modal_props.content.title;
-    let contentToModify = portalContextReducer.portalIsActive.modal_props.content.content;
-    const [title, setTitle] = useState(titleToModify);
-    const [content, setContent] = useState(contentToModify);
-    let { type } = portalContextReducer.portalIsActive.modal_props;
+    const [customTasks, setCustomTasks] = useTasks();
+    const { titleState, contentState, modal_props } = customTasks;
+    let [title, setTitle] = titleState;
+    let [content, setContent] = contentState;
+    let { type } = modal_props;
 
     let onTitleChange = (e) => {
         const inputTitle = e.target.value;
@@ -22,30 +18,11 @@ export function ModalForm({ kindof }) {
     }
     const onAddEvent = (e) => {
         e.preventDefault();
-        const task = new TaskModel(tasksContextReducer.tasks.length, title, content, undefined);
-        try {
-            tasksContextReducer.setTask({ type: "add", task: task });
-            portalContextReducer.togglePortal({ type: "toggle", modal_props: new ModalProps() })
-            let currentTasks = [...tasksContextReducer.tasks];
-            localStorage.setItem("tasks", JSON.stringify(currentTasks));
-        } catch (error) {
-            console.log(error);
-        }
-
+        setCustomTasks("add", undefined, title, content)
     }
     const onModifyEvent = (e) => {
         e.preventDefault();
-        const oldtask = portalContextReducer.portalIsActive.modal_props.content;
-        const newtask = new TaskModel(tasksContextReducer.tasks.length, title, content, oldtask.completed);
-        try {
-            tasksContextReducer.setTask({ type: "modify", task: newtask, taskId: oldtask.id });
-            portalContextReducer.togglePortal({ type: "toggle", modal_props: new ModalProps() })
-            let currentTasks = [...tasksContextReducer.tasks];
-            localStorage.setItem("tasks", JSON.stringify(currentTasks));
-        } catch (error) {
-            console.log(error);
-        }
-
+        setCustomTasks("modify", undefined, title, content)
     }
     return (
         <>
@@ -54,30 +31,30 @@ export function ModalForm({ kindof }) {
                 ?
                 <form className="modal-form" onSubmit={onAddEvent}>
                     <div className="input-box">
-                        <input type="text" onChange={onTitleChange} />
+                        <input type="text" onChange={onTitleChange} required />
                         <span>Title</span>
                         <i></i>
                     </div>
                     <div className="input-box">
-                        <input type="text" onChange={onContentChange} />
+                        <input type="text" onChange={onContentChange} required />
                         <span>Content</span>
                         <i></i>
                     </div>
-                    <input type="submit" value={kindof} />
+                    <button type="submit" className="btn-action" >{kindof}</button>
                 </form>
                 :
                 <form className="modal-form" onSubmit={onModifyEvent}>
                     <div className="input-box">
-                        <input type="text" onChange={onTitleChange} value={title} />
+                        <input type="text" onChange={onTitleChange} value={title} required />
                         <span>Title</span>
                         <i></i>
                     </div>
                     <div className="input-box">
-                        <input type="text" onChange={onContentChange} value={content} />
+                        <input type="text" onChange={onContentChange} value={content} required />
                         <span>Content</span>
                         <i></i>
                     </div>
-                    <input type="submit" value={kindof} />
+                    <button type="submit" className="btn-action" >{kindof}</button>
                 </form>
             }
         </>

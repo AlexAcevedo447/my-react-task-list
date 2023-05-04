@@ -1,32 +1,54 @@
-import { TaskModel } from "../../models/taskModel";
+import { noRepeat } from "../utils/arrayFunctionalities";
 
-export const tasksInitialState = [];
 
-export const tasksReducer = (state, action) => {
-    switch (action.type) {
+export const tasksInitialState = JSON.parse(localStorage.getItem("tasks") ? localStorage.getItem("tasks") : "[]");
+
+export const tasksReducer = (state, { type, task, taskId, tasks }) => {
+    let modifiedState = state;
+    switch (type) {
 
         case "add":
-            return [
-                ...state,
-                action.task
+            modifiedState = [
+                ...modifiedState,
+                task
             ]
+            localStorage.setItem("tasks", JSON.stringify([...modifiedState]))
+            return [...modifiedState];
         case "delete":
-            return state.filter((task) => task.id !== action.taskId);
+            modifiedState = state.filter((task) => task.id !== taskId);
+            localStorage.setItem("tasks", JSON.stringify([...modifiedState]))
+            return [...modifiedState];
         case "modify":
-            return state.map((task) => {
-                if (task.id === action.taskId) {
+            modifiedState = state.map((taskItem) => {
+                if (taskItem.id === taskId) {
                     return {
-                        ...task,
-                        title: action.task.title,
-                        content: action.task.content
+                        ...taskItem,
+                        title: task.title,
+                        content: task.content
                     }
                 }
                 else {
-                    return task
+                    return taskItem
                 }
             })
+            localStorage.setItem("tasks", JSON.stringify([...modifiedState]));
+            return [...modifiedState];
+        case "completed":
+            modifiedState = state.map((taskItem) => {
+                if (taskItem.id === taskId) {
+                    return {
+                        ...taskItem,
+                        completed: !taskItem.completed
+                    }
+                } else {
+                    return taskItem;
+                }
+            })
+            localStorage.setItem("tasks", JSON.stringify([...modifiedState]))
+            return [...modifiedState];
+        case "combine":
         default:
-            return state
+            return [...modifiedState]
 
     }
 

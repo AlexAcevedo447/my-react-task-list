@@ -8,10 +8,11 @@ const myPortal = document.getElementById('portal');
 
 export const Portal = ({ children }) => {
     const { portalContextReducer } = useContext(PortalContext);
+    let [portalIsActive] = portalContextReducer();
 
     return (
         <>
-            {portalContextReducer.portalIsActive.active === true && createPortal(<div className="ns_modal">{children}</div>, myPortal)}
+            {portalIsActive.active === true && createPortal(<div className="ns_modal">{children}</div>, myPortal)}
 
         </>
     )

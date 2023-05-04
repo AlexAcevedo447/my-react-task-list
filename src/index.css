@@ -56,4 +56,5 @@ body {
   border-radius: 10px;
   border: 1px solid var(--blue-20);
   box-shadow: 5px 5px 10px 1px var(--blue-20);
+  transition: 0.3s;
 }

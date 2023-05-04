@@ -1,11 +1,12 @@
-import { createContext, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 import { portalReducer, portalInitialState } from "../reducers/portalReducer";
 import { ModalProps } from "../../models/modalProps";
 import { tasksReducer, tasksInitialState } from "../reducers/tasksReducer";
+import { dataBaseReducer, dbInitialState } from "../reducers/dataBaseReducer";
 
 const portalInitialContext = {
-    portalContextReducer: { portalIsActive: { active: false, modal_props: new ModalProps() }, togglePortal: ({ type, modal_props }) => { } },
-    tasksContextReducer: { tasks: [], setTask: ({ type, task, taskId }) => { } }
+    portalContextReducer: () => [{ active: false, modal_props: new ModalProps() }, ({ type, modal_props }) => { }],
+    tasksContextReducer: () => [[], ({ type, task, taskId, tasks }) => { }]
 }
 
 export const PortalContext = createContext(portalInitialContext);
@@ -16,7 +17,9 @@ const PortalProvider = ({ children }) => {
     let [tasks, dispatch] = useReducer(tasksReducer, tasksInitialState);
 
     return (
-        <PortalContext.Provider value={{ portalContextReducer: { portalIsActive, togglePortal }, tasksContextReducer: { tasks: [...tasks], setTask: dispatch } }}>
+        <PortalContext.Provider value={{
+            portalContextReducer: () => [portalIsActive, togglePortal], tasksContextReducer: () => [[...tasks], dispatch],
+        }}>
             {children}
         </PortalContext.Provider>
     )

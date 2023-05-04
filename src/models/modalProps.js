@@ -1,7 +1,7 @@
 import { TaskModel } from "./taskModel";
 
 export class ModalProps {
-    constructor(type = "", title = "", content = new TaskModel(), actions) {
+    constructor(type = "", title = "", content = { text: "", task: new TaskModel() }, actions) {
         this.type = type;
         this.title = title;
         this.content = content;
@@ -26,9 +26,9 @@ function TaskModalFormProps(type, title, content) {
 }
 
 export function AddTaskModalFormProps(title) {
-    return TaskModalFormProps("modal-add-form", title, new TaskModel());
+    return TaskModalFormProps("modal-add-form", title, { text: "", task: new TaskModel() });
 }
 
 export function EditTaskModalFormProps(title, content) {
-    return TaskModalFormProps("modal-modify-form", title, content);
+    return TaskModalFormProps("modal-modify-form", title, { text: "", task: content });
 }
