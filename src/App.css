@@ -26,3 +26,9 @@
   background-color: white;
   color: var(--blue-80);
 }
+
+.btn-action:disabled {
+  background-color: var(--blue-80);
+  border: 1px solid white;
+  color: white;
+}
