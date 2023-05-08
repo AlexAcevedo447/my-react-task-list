@@ -1,10 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Kanit", sans-serif;
+}
+.dancing-script {
+  font-family: "Dancing Script", cursive;
 }
 :root {
   --blue-100: #050239;
@@ -57,4 +61,16 @@ body {
   border: 1px solid var(--blue-20);
   box-shadow: 5px 5px 10px 1px var(--blue-20);
   transition: 0.3s;
+}
+
+.v-divisor {
+  height: 90%;
+  width: 2px;
+  background-color: var(--blue-100);
+}
+
+.h-divisor {
+  height: 2px;
+  width: 90%;
+  background-color: var(--blue-100);
 }

@@ -17,6 +17,7 @@ export function useTasks() {
                 const task = new TaskModel(tasks.length, title, content, undefined);
                 try {
                     setTask({ type, task: task });
+                    alert(" Task number " + task.id + " successfully created!")
                     togglePortal("toggle", new ModalProps())
                 } catch (error) {
                     console.log(error);
@@ -27,6 +28,7 @@ export function useTasks() {
                 const newtask = new TaskModel(tasks.length, title, content, oldtask.completed);
                 try {
                     setTask({ type: "modify", task: newtask, taskId: oldtask.id });
+                    alert(" Task number " + oldtask.id + " successfully modified!")
                     togglePortal("toggle", new ModalProps())
                 } catch (error) {
                     console.log(error);
@@ -38,6 +40,8 @@ export function useTasks() {
             case "delete":
                 try {
                     setTask({ type, taskId: id })
+                    alert(" Task number " + id + " successfully deleted!")
+                    togglePortal("toggle", new ModalProps())
                 } catch (error) {
                     console.error(error);
                 }

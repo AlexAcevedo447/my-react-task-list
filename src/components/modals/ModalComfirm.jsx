@@ -27,7 +27,7 @@ export const ModalComfirm = () => {
             </div>
             <div className="ns_modal--actions">
                 {type === "modal-comfirm-delete" && <div className="delete-actions"><button className="btn-action" onClick={() => togglePortal("toggle", new ModalProps())}>I´m not sure</button>
-                    <button className="btn-action" onClick={() => { setTask("delete", id); togglePortal("toggle", new ModalProps()) }}>Just delete it</button></div>}
+                    <button className="btn-action" onClick={() => { setTask("delete", id); }}>Just delete it</button></div>}
             </div>
         </>
     )

@@ -6,7 +6,7 @@
  * @param {boolean} completed 
  */
 
-export function TaskModel(id = 0, title = "", content = "", completed = true) {
+export function TaskModel(id = 0, title = "", content = "", completed = false) {
     this.id = id;
     this.title = title;
     this.content = content;

@@ -62,13 +62,12 @@ export function ModalForm({ kindof }) {
                         <span>Title</span>
                         <i></i>
                     </div>
-                    <strong style={{ color: "red" }}>{formErrors.title}</strong>
                     <div className="input-box">
                         <input type="text" onChange={onContentChange} value={content} required />
                         <span>Content</span>
                         <i></i>
                     </div>
-                    <button disabled={!isValid} type="submit" className="btn-action" >{kindof}</button>
+                    <button type="submit" className="btn-action" >{kindof}</button>
                 </form>
             }
         </>

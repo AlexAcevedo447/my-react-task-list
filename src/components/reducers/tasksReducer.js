@@ -1,4 +1,3 @@
-import { noRepeat } from "../utils/arrayFunctionalities";
 
 
 export const tasksInitialState = JSON.parse(localStorage.getItem("tasks") ? localStorage.getItem("tasks") : "[]");

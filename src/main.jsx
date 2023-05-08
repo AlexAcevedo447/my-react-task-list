@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import AppRouter from './App-router'
 import './index.css'
-import PortalProvider from './components/context/portalContext'
+import PortalProvider from './components/context/portalContext';
+import AppRouting from './AppRouting';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AppRouter></AppRouter>
+    <PortalProvider children={<AppRouting></AppRouting>} />
   </React.StrictMode>,
 )
