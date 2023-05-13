@@ -25,7 +25,7 @@ export function useTasks() {
                 break;
             case "modify":
                 const oldtask = portalIsActive.modal_props.content.task;
-                const newtask = new TaskModel(tasks.length, title, content, oldtask.completed);
+                const newtask = new TaskModel(oldtask.id, title, content, oldtask.completed);
                 try {
                     setTask({ type: "modify", task: newtask, taskId: oldtask.id });
                     alert(" Task number " + oldtask.id + " successfully modified!")

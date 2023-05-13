@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import "./AppHeader.css";
+import { Heading, Text } from "@chakra-ui/react";
 
 export default () => {
     return (
         <header className="app-header">
-            <h1 className="main-button dancing-script">NS Task Manager</h1>
+            <Heading as="h1" className="main-button"><Text className="d-scr">NS Task Manager</Text></Heading>
 
             <nav>
                 <ul>

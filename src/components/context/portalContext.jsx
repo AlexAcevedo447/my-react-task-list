@@ -4,7 +4,7 @@ import { ModalProps } from "../../models/modalProps";
 import { tasksReducer, tasksInitialState } from "../reducers/tasksReducer";
 
 const portalInitialContext = {
-    portalContextReducer: () => [{ active: false, modal_props: new ModalProps() }, ({ type, modal_props }) => { }],
+    portalContextReducer: () => [{ modal_props: new ModalProps() }, ({ type, modal_props }) => { }],
     tasksContextReducer: () => [[], ({ type, task, taskId, tasks }) => { }]
 }
 

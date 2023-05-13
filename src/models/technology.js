@@ -1,7 +1,6 @@
 export class Technology {
-    constructor(Component, classname, color) {
+    constructor(Component, color) {
         this.Component = Component;
-        this.classname = classname;
         this.color = color;
     }
 }

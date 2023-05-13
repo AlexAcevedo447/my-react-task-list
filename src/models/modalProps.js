@@ -1,34 +1,37 @@
 import { TaskModel } from "./taskModel";
 
 export class ModalProps {
-    constructor(type = "", title = "", content = { text: "", task: new TaskModel() }, actions) {
+    constructor(type = "", title = "", content = { text: "", task: new TaskModel() }, actions = false) {
         this.type = type;
         this.title = title;
         this.content = content;
-        this.actions = actions
+        this.actions = actions;
     }
 }
 
 /**
+ * @param {string} type
  * @param {string} title
- * @param {string} content
+ * @param {string} text
  */
-export function ConfirmProps(title, content) {
-    return new ModalProps("confirm", title, content, { cancel: true, accept: true });
+export function ConfirmProps(type, title, text) {
+
+    return new ModalProps(type, title, { text, task: new TaskModel() }, true);
 }
 
 /**
  * @param {string} title
- * @param {TaskModel|null} content
+ * @param {TaskModel} task
+ * @param {{buttonContent:string,buttonVariant:string}} buttonProps
  */
-function TaskModalFormProps(type, title, content) {
-    return new ModalProps(type, title, content, { cancel: true, accept: true })
+export function EditTaskModalFormProps(title, task) {
+    return new ModalProps("modify", title, { text: "", task: task }, false)
 }
+
+/**
+ * @param {string} title
+ */
 
 export function AddTaskModalFormProps(title) {
-    return TaskModalFormProps("modal-add-form", title, { text: "", task: new TaskModel() });
-}
-
-export function EditTaskModalFormProps(title, content) {
-    return TaskModalFormProps("modal-modify-form", title, { text: "", task: content });
+    return new ModalProps("add", title, { text: "", task: new TaskModel() }, false)
 }

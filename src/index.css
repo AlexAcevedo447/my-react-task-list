@@ -6,8 +6,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Kanit", sans-serif;
+  transition: 0.3s ease;
 }
-.dancing-script {
+.d-scr {
   font-family: "Dancing Script", cursive;
 }
 :root {
@@ -64,13 +65,13 @@ body {
 }
 
 .v-divisor {
-  height: 90%;
+  height: 95%;
   width: 2px;
   background-color: var(--blue-100);
 }
 
 .h-divisor {
   height: 2px;
-  width: 90%;
+  width: 95%;
   background-color: var(--blue-100);
 }

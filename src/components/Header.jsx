@@ -1,9 +1,9 @@
-import "./Header.css"
+import { Heading, Text } from "@chakra-ui/react";
 
 export const Header = () => {
     return (
-        <header className="head-container">
-            <h1 className="head-title">Todo app</h1>
-        </header>
+        <Heading as="h1">
+            <Text textDecoration="underline" >Todo app</Text>
+        </Heading>
     );
 }

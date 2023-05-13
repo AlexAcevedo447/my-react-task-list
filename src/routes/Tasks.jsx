@@ -1,27 +1,24 @@
 import { Header } from '../components/Header';
 import { TaskList } from '../components/TaskList';
-import { Modal } from '../components/modals';
 
 import "./Tasks.css"
 
-import { useContext } from 'react';
 import { AddTaskModalFormProps } from '../models/modalProps';
-import { NsButton } from '../components/buttons/NsButton';
-import { PortalContext } from '../components/context/portalContext';
+import { Flex } from '@chakra-ui/react';
+import ModalConfirm from '../components/modals/ModalConfirm';
+import { usePortal } from '../components/hooks';
+import { BsPlus } from 'react-icons/bs';
 
-export default () => {
+export default function Tasks() {
     document.title = "Tasks"
-    const { portalContextReducer } = useContext(PortalContext);
-    let [portalIsActive, togglePortal] = portalContextReducer();
-    const openNewAddTaskForm = () => {
-        togglePortal({ type: "toggle", modal_props: AddTaskModalFormProps("Add a todo") });
-    }
+    const modalProps = AddTaskModalFormProps("Add a new todo");
+    const buttonProps = { buttonContent: "Add a new todo", buttonVariant: "outline", LeftIcon: <BsPlus size="40px" /> };
+    const [portalIsActive, togglePortal] = usePortal();
     return (
-        <div className="task-popup">
+        <Flex className="task-popup">
             <Header />
-            <NsButton title={"Add a new todo"} mode={"cake"} openModal={openNewAddTaskForm} />
-            <Modal />
+            <ModalConfirm buttonProps={buttonProps} setContext={() => { togglePortal("open", modalProps); }} />
             <TaskList />
-        </div>
+        </Flex>
     )
 }

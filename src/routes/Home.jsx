@@ -2,24 +2,19 @@
 import "./Home.css";
 import { NsButton } from "../components/buttons/NsButton";
 import { useNavigate } from "react-router-dom";
-import lazyNamedExports from "../components/utils/lazyNamedExports";
-import { Suspense } from "react";
-
-const TaskFollowImg = lazyNamedExports(() => import("../components/images/Images"), "TaskFollowImg")
+import task_image from "../assets/task_follow.jpg"
+import { Flex, Heading, Text, Image } from "@chakra-ui/react";
 
 export default () => {
     document.title = "Home"
     const navigate = useNavigate();
     return (
-        <div className="exotic-section">
-            <Suspense fallback="Loading..." children={<TaskFollowImg></TaskFollowImg>} />
-            <h1>Welcome to <strong className="dancing-script">NS Task Manager</strong></h1>
-            <div className="description">
-                <p>The place where managing your tasks will not be a problem anymore</p>
-                <p>Don´t believe me?</p>
-
-            </div>
+        <Flex flexDirection="column" justifyContent="flex-start" alignItems="center" width="98%" height="80%" gap="30px">
+            <Image src={task_image} className="task_follow" />
+            <Heading as="h1" display="flex" flexDirection="row" gap="10px">Welcome to <Text className={"d-scr"}>NS Task Manager</Text></Heading>
+            <Text fontSize="2xl">The place where managing your tasks will not be a problem anymore</Text>
+            <Text fontSize="xl">Don´t believe me?</Text>
             <NsButton title={"Find out for yourself!"} mode={"glow"} openModal={() => navigate("/tasks")} />
-        </div>
+        </Flex>
     )
 }
