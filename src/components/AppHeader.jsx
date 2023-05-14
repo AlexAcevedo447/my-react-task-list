@@ -1,28 +1,35 @@
 import { Link } from "react-router-dom";
 import "./AppHeader.css";
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading, Text, Button, useColorMode, Flex } from "@chakra-ui/react";
+import { useNsColorValues } from "./hooks";
 
 export default () => {
+    const { toggleColorMode, colorMode } = useColorMode();
+    const { bg, fontColor } = useNsColorValues();
     return (
-        <header className="app-header">
-            <Heading as="h1" className="main-button"><Text className="d-scr">NS Task Manager</Text></Heading>
+        <Flex backgroundColor={bg} className="app-header">
+            <Heading as="h1" color={fontColor} className="main-button">
+                <Text className="d-scr">NS Task Manager</Text>
+            </Heading>
 
             <nav>
                 <ul>
-                    <Link className="nav-option" to="/">
-                        <li>Home</li>
-                        <span></span>
+                    <Link className="nav-option" to="/" >
+                        <Text as="li" color={fontColor}>Home</Text>
+                        <Flex as="span" backgroundColor={fontColor}></Flex>
                     </Link>
                     <Link className="nav-option" to="/tasks">
-                        <li>Tasks</li>
-                        <span></span>
+                        <Text as="li" color={fontColor}>Tasks</Text>
+                        <Flex as="span" backgroundColor={fontColor}></Flex>
                     </Link>
                     <Link className="nav-option" to="/about_us">
-                        <li>About us</li>
-                        <span></span>
+                        <Text as="li" color={fontColor}>About Us</Text>
+                        <Flex as="span" backgroundColor={fontColor}></Flex>
                     </Link>
                 </ul>
+
             </nav>
-        </header>
+            <Button color={fontColor} onClick={() => { toggleColorMode(); console.log(colorMode) }} >{colorMode === "light" ? "Light" : "Dark"} mode</Button>
+        </Flex>
     )
 }

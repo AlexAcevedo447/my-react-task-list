@@ -12,9 +12,10 @@ import {
 } from '@chakra-ui/react';
 import ManageTaskForm from '../forms/ManageTaskForm';
 import { ModalProps } from '../../models/modalProps';
-import { usePortal } from '../hooks';
+import { useNsColorValues, usePortal } from '../hooks';
 
 export default function ModalConfirm({ setContext = () => { }, buttonProps, onDelete = () => { } }) {
+    const { bg, fontColor } = useNsColorValues();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [portalIsActive, togglePortal] = usePortal()
     const { type, title, content, actions } = portalIsActive.modal_props;
@@ -28,7 +29,7 @@ export default function ModalConfirm({ setContext = () => { }, buttonProps, onDe
     }
     return (
         <>
-            <Button colorScheme="blue.0" leftIcon={buttonProps.LeftIcon ? buttonProps.LeftIcon : <></>} variant={buttonProps.buttonVariant} onClick={onOpenModal}>
+            <Button color={fontColor} borderColor={fontColor} leftIcon={buttonProps.LeftIcon ? buttonProps.LeftIcon : <></>} variant={buttonProps.buttonVariant} onClick={onOpenModal}>
                 {buttonProps.buttonContent}
             </Button>
 
