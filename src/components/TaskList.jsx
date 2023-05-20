@@ -22,6 +22,7 @@ export function TaskList() {
                 found.title = content;
                 let currentTasks = [...tasks];
                 setTask(currentTasks);
+                localStorage.setItem("tasks", JSON.stringify(currentTasks));
             } else if (kindof === "content") {
                 found.content = content;
                 let currentTasks = [...tasks];
@@ -54,6 +55,7 @@ export function TaskList() {
         let sortedTasks = tasks.sort(compareFn);
         let currentTasks = [...sortedTasks];
         setTask(currentTasks);
+        localStorage.setItem("tasks", JSON.stringify(currentTasks));
     }
 
     const handleAddTask = (title, content) => {
@@ -76,10 +78,9 @@ export function TaskList() {
     }
     const handleDeleteTask = (id) => {
         let currentTasks = [...tasks];
-        currentTasks.splice(id, 1);
-        localStorage.setItem("tasks", JSON.stringify(currentTasks));
-
-        setTask([...currentTasks]);
+        const deleted_task = currentTasks.filter(task => task.id !== id);
+        localStorage.setItem("tasks", JSON.stringify(deleted_task));
+        setTask([...deleted_task]);
     }
 
     return (
