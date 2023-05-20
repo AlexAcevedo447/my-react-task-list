@@ -1,8 +1,8 @@
-# Kali-Task
+# NS Task Manager
 
 ## Sobre mi producto:
 
-- Kali task es un administrador de tareas que te facilitará el día a día con un visualizador de tareas a la mano.
+- NS Task Manager es un administrador de tareas que te facilitará el día a día con un visualizador de tareas a la mano.
 
 ## Funciones del producto:
 
@@ -12,7 +12,7 @@
 - Elimina tareas que el usuario ya no necesite en su dashboard
 - Otorga la facilidad al usuario de indicar si una tarea ya fué completada o no.
 
-## ¿Por qué Kali-Task?
+## ¿Por qué NS Task Manager?
 
 - Provee una interfaz intuitiva
 - La solución se ajusta al usuario, no el usuario a la solución.
