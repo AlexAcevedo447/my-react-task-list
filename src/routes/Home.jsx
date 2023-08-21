@@ -14,7 +14,7 @@ export default () => {
             <Heading color={fontColor} as="h1" display="flex" flexDirection="row" gap="10px">Welcome to <Text className={"d-scr"}>NS Task Manager</Text></Heading>
             <Text color={fontColor} fontSize="2xl">The place where managing your tasks will not be a problem anymore</Text>
             <Text color={fontColor} fontSize="xl">Don´t believe me?</Text>
-            <Button variant="outline" border="3px solid" borderColor={fontColor} borderRadius="0px" padding="25px" openModal={() => navigate("/tasks")}>Find out for yourself!</Button>
+            <Button variant="outline" border="3px solid" borderColor={fontColor} borderRadius="0px" padding="25px" onClick={() => navigate("/tasks")}>Find out for yourself!</Button>
         </Flex>
     )
 }

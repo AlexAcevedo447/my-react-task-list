@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useState } from "react";
 import { portalReducer, portalInitialState } from "../reducers/portalReducer";
 import { ModalProps } from "../../models/modalProps";
 import { tasksReducer, tasksInitialState } from "../reducers/tasksReducer"; import { useColorModeValue } from "@chakra-ui/react";
@@ -6,7 +6,7 @@ import { tasksReducer, tasksInitialState } from "../reducers/tasksReducer"; impo
 const portalInitialContext = {
     portalContextReducer: () => [{ modal_props: new ModalProps() }, ({ type, modal_props }) => { }],
     tasksContextReducer: () => [[], ({ type, task, taskId, tasks }) => { }],
-    colorModeValues: { bg: "", fontColor: "" }
+    colorModeValues: { bg: "", fontColor: "" },
 }
 
 export const PortalContext = createContext(portalInitialContext);

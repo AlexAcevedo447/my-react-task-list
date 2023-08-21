@@ -11,14 +11,14 @@
 .d-scr {
   font-family: "Dancing Script", cursive;
 }
-:root {
+/* :root {
   --blue-100: #050239;
   --blue-80: #0a0568;
   --blue-60: #090377;
   --blue-40: #0e05b5;
   --blue-20: #2618e7;
   --blue-10: #7682ff;
-}
+} */
 
 ::-webkit-scrollbar {
   background-color: transparent;
